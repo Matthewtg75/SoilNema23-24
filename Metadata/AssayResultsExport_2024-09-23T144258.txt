@@ -1,0 +1,12 @@
+2024 Lab Sample #	Grower ID #	Meloidogyne     Root-knot	Pratylenchus     Lesion	Paratrichodorus     Stubby root	Mesocriconema, etc.     Ring	Helicotylenchus     Spiral	     	     	     	     	     	     	     	     	     	     	     	     	     	     	     	     	     	     	     	     	     	     	     	     	     	     	     	     	     	     	     	     	     	     	     
+2295	"'OJ"	264	1	0	0	0
+2296	"'Dry Chick"	16	3	0	0	137
+2297	"'Shotgun Left"	3	1	0	24	0
+2298	"'Shotgun Right"	0	0	0	27	0
+2299	"'Ew Booth"	0	2	2	0	1
+2300	"'Porters"	6	0	5	5	23
+2301	"'Porters Left"	49	0	3	9	100
+2302	"'Tri Site"	0	2	5	32	0
+2303	"'Porter Corner"	5	0	3	5	8
+2304	"'82"	1	5	2	5	32
+2305	"'Stone Bridge"	245	0	0	3	26

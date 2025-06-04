@@ -1,0 +1,18 @@
+sites,county,treatment,root knot,lesion,stubby root,ring,spiral,avg_treat_root,avg_treat_lesion,avg_treat_stubby,avg_treat_ring,avg_treat_spiral,avg_irrg_stat_root,avg_irrig_stat_lesion,avg_irrig_stat_stubby,avg_irrig_stat_ring,avg_irrig_stat_spiral
+shotgun_left,worth,DC,3,1,0,24,0,48.4,2.2,0.4,13.2,6.6,81.16666667,1.833333333,0.333333333,11.5,9.833333333
+shotgun_right,worth,DC,0,0,0,27,0,,,,,,,,,,
+82rd,tift,DC,1,5,2,5,32,,,,,,,,,,
+319_church,colquitt,DC,111,3,0,7,1,,,,,,,,,,
+cool_spring,colquitt,DC,127,2,0,3,0,,,,,,,,,,
+stone_bridge,tift,DR,245,0,0,3,26,245,0,0,3,26,,,,,
+oj,colquitt,IC,264,1,0,0,0,61,2,2.571428571,8.285714286,38.28571429,203.2727273,1.545454545,2.272727273,6.454545455,25.27272727
+dry_chick,colquitt,IC,16,3,0,0,137,,,,,,,,,,
+porters,worth,IC,6,0,5,5,23,,,,,,,,,,
+porters_left,worth,IC,49,0,3,9,100,,,,,,,,,,
+tri_site,worth,IC,0,2,5,32,0,,,,,,,,,,
+porter_corner,worth,IC,5,0,3,5,8,,,,,,,,,,
+sears,colquitt,IC,87,8,2,7,0,,,,,,,,,,
+ew_booth,worth,IR,0,2,2,0,1,452.25,0.75,1.75,3.25,2.5,,,,,
+upper_tyty,tift,IR,1278,0,5,7,8,,,,,,,,,,
+tyty_sparks,tift,IR,343,1,0,1,1,,,,,,,,,,
+jacob_hall,tift,IR,188,0,0,5,0,,,,,,,,,,
