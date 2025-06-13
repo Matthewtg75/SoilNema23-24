@@ -1,0 +1,18 @@
+sites,county,treatment,root knot,lesion,stubby root,ring,spiral
+oj,colquitt,IC,264,1,0,0,0
+dry_chick,colquitt,IC,16,3,0,0,137
+shotgun_left,worth,DC,3,1,0,24,0
+shotgun_right,worth,DC,0,0,0,27,0
+ew_booth,worth,IR,0,2,2,0,1
+porters,worth,IC,6,0,5,5,23
+porters_left,worth,IC,49,0,3,9,100
+tri_site,worth,IC,0,2,5,32,0
+porter_corner,worth,IC,5,0,3,5,8
+82rd,tift,DC,1,5,2,5,32
+stone_bridge,tift,DR,245,0,0,3,26
+319_church,colquitt,DC,111,3,0,7,1
+sears,colquitt,IC,87,8,2,7,0
+cool_spring,colquitt,DC,127,2,0,3,0
+upper_tyty,tift,IR,1278,0,5,7,8
+tyty_sparks,tift,IR,343,1,0,1,1
+jacob_hall,tift,IR,188,0,0,5,0

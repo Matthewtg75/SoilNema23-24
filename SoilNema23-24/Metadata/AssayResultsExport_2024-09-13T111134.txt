@@ -1,0 +1,7 @@
+2024 Lab Sample #	Grower ID #	Meloidogyne     Root-knot	Pratylenchus     Lesion	Paratrichodorus     Stubby root	Mesocriconema, etc.     Ring	Helicotylenchus     Spiral	     	     	     	     	     	     	     	     	     	     	     	     	     	     	     	     	     	     	     	     	     
+2074	"'319 C"	111	3	0	7	1
+2075	"'Sears"	87	8	2	7	0
+2076	"'Cool Spring"	127	2	0	3	0
+2077	"'Upper TyTy"	1278	0	5	7	8
+2078	"'TyTy Sparks"	343	1	0	1	1
+2079	"'Jacob Hall"	188	0	0	5	0
