@@ -3,7 +3,7 @@ library(dplyr)
 library(esquisse)
 library(ggplot2)
 library(tidyr)
-setwd("/Users/snydermac/Desktop/Matthew/MatthewR")
+setwd("/Users/Matthew")
 
 #Getting everthing set up##################
 # reading file in
@@ -18,6 +18,44 @@ soil24 = read.csv("24 sites nematode counts(Sheet1).csv")
 SG24<- soil24 %>%
   pivot_longer(cols = 4:8, names_to = "Nematodes", values_to = "Value")
 
+SG23 = SG23 %>%
+  mutate(Year=2023)%>%
+  select(Farms, Treat, Nematodes, Value, Year)%>%
+  mutate(Nematodes=case_when(Nematodes=="Helicotylenchus.....Spiral"~"spiral",
+            Nematodes=="Meloidogyne.....Root.knot"~"root.knot",
+            Nematodes=="Paratrichodorus.....Stubby.root"~"stubby.root",
+            Nematodes=="Mesocriconema..etc......Ring"~"ring",
+            .default = "other"))
+
+SG24 = SG24 %>%
+  mutate(Year=2024)%>%
+  mutate(Farms=sites)%>%
+  mutate(Treat=treatment)%>%
+  select(Farms, Treat, Nematodes, Value, Year)
+
+SG2324 = bind_rows(SG23, SG24)
+SG2324= SG2324[SG2324$Nematodes %in% c("ring", "root.knot","spiral","stubby.root"), ]
+
+library(stringr)
+SG2324[c("Irrig","Till")] = str_split_fixed(SG2324$Treat, "",2 )
+
+Nematode_obj = c(ring = "Ring (Mesocriconema)",
+                 root.knot = "Root Knot (Meloidogyne)",
+                 stubby.root = "Stubby Root (Paratrichodorus)",
+                 spiral = "Spiral (Helicotylenchus)")
+
+ggplot(SG2324, aes(x=Irrig, y=Value, fill = Till)) +
+  geom_boxplot()+
+  facet_wrap(vars(Nematodes), scales="free_y", labeller=labeller(Nematodes=Nematode_obj))+
+  labs(title = "Nematodes 2023- 2024", x="Irrigation", y="Abundance") +
+  scale_x_discrete(labels=c("Non-Irrigated", "Irrigated"))+
+  scale_fill_discrete(name="Tillage",
+                      labels=c("Conventional", "Reduced"))+
+  theme(panel.background = element_blank(),
+        plot.title = element_text(size = 23L, 
+                                  face = "bold", hjust = 0.5),
+        axis.title.y = element_text(size=15, face = "bold"),
+        axis.title.x = element_text(size=15, face = "bold"))
 
 #making Plots or graphs####################
 #most recent graph created for nematodes
@@ -83,17 +121,6 @@ ggplot(soil23) +
 
 
 #making Plots or graphs####################
-
-#most recent graph created for nematodes
-ggplot(SG23) +
-  aes(x = Nematodes, y = Value, fill = Nematodes, group = Treat) +
-  geom_boxplot() +
-  scale_fill_hue(direction = 1) +
-  labs(title = "2023 Nematode Samples", fill = "Treatment") +
-  theme_minimal() +
-  theme(plot.title = element_text(size = 23L, 
-                                  face = "bold", hjust = 0.5)) +
-  facet_wrap(vars(Nematodes), scales = "free_y")
 
 
 #press cmd + return to do esquessie
