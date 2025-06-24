@@ -8,6 +8,7 @@ setwd("/Users/Matthew")
 #Getting everthing set up##################
 # reading file in
 
+#Sofie help on getting the graph jordan wanted 2023-24 compared###
 soil23 = read.csv("soil23.csv")
 
 SG23<- soil23 %>%
