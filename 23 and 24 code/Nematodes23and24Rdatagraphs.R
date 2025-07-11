@@ -3,7 +3,7 @@ library(dplyr)
 library(esquisse)
 library(ggplot2)
 library(tidyr)
-setwd("/Users/Matthew")
+setwd("~/Documents/GitHub/SoilNema23-24/Working code")
 
 #Getting everthing set up##################
 # reading file in
@@ -96,59 +96,12 @@ SG23 %>%
              Max = max(Value)) %>%
   ggplot(., aes(x = Treat, y = Avg_Per_Treat)) + geom_col()
 
-SG23 %>%
-  group_by(Treat) %>%
-  summarise_at(vars(Value),list(name=sd)) %>%
-  ggplot(., aes(x = Treat, y = SD)) + geom_col()
-
-
-ggplot(SG23) +
- aes(x = Nematodes, y = Value, fill = Nematodes, group = Treat) +
- geom_boxplot() +
- scale_fill_hue(direction = 1) +
- labs(title = "2023 Nematode Samples Boxplot", fill = "Treatment") +
- theme_minimal() +
- theme(plot.title = element_text(size = 23L, 
- face = "bold", hjust = 0.5)) +
- facet_wrap(vars(Nematodes), scales = "free_y")
-
-ggplot(soil23) +
- aes(x = Meloidogyne.....Root.knot, y = Treat) +
- geom_boxplot(fill = "#112446") +
- labs(title = "Box Plot of 2023 Soil Samples") +
- theme_minimal() +
- theme(plot.title = element_text(size = 21L, face = "bold", hjust = 0.5))
-
-
-
 #making Plots or graphs####################
 
 
 #press cmd + return to do esquessie
 esquisser()
 
-
-
-ggplot(SG23) +
- aes(x = Treat, y = mean_treats, fill = Treat) +
- geom_col() +
- scale_fill_hue(direction = 1) +
- labs(x = "Treatments", y = "Means Values of Nematodes", title = "Nematodes Types across Treatments", 
- fill = "Treatments") +
- theme_minimal() +
- theme(plot.title = element_text(face = "bold", hjust = 0.5), 
- axis.title.y = element_text(face = "bold"), axis.title.x = element_text(face = "bold")) +
- facet_wrap(vars(Nematodes), 
- scales = "free_y")
-
-ggplot(SG23) +
- aes(x = Treat_Type, y = mean_treats, fill = Treat) +
- geom_col() +
- geom_line(colour = "#112446") +
- scale_fill_hue(direction = 1) +
- labs(x = "Nematode Type and Treatment", y = "Mean Number of Nematodes", 
- title = "Treatments vs means") +
- theme_minimal()
 
 #Sofies magic graph she helped with
 
@@ -189,13 +142,6 @@ ggplot(SG23) +
 
 
 ggplot(SG23) +
- aes(x = Treat, y = Value, fill = Farms) +
- geom_boxplot() +
- scale_fill_hue(direction = 1) +
- theme_minimal()
-library(ggplot2)
-
-ggplot(SG23) +
  aes(x = Treat, y = Value, fill = Nematodes) +
  geom_boxplot() +
  scale_fill_hue(direction = 1) +
@@ -206,57 +152,69 @@ ggplot(SG23) +
  facet_wrap(vars(Nematodes), scales = "free_y")
 SG23 %>% 
   reframe(mean=mean(count),SD=sd(count))
+####### Year 23 #########
 
-ggplot(SG23) +
-  aes(x = Treat, y = Value, fill = Nematodes, colour = Treat) +
-  geom_boxplot() +
-  geom_boxplot() +
-  scale_fill_hue(direction = 1) +
-  scale_color_hue(direction = 1) +
-  theme_minimal()
+SG23= SG23[SG23$Nematodes %in% c("ring", "root.knot","spiral","stubby.root"), ]
 
-ggplot(SG23) +
-  aes(x = Treat, y = Value, fill = Nematodes) +
-  geom_boxplot() +
-  scale_fill_hue(direction = 1) +
-  theme_minimal()
+SG23[c("Irrig","Till")] = str_split_fixed(SG23$Treat, "",2 )
 
-ggplot(SG23) +
-  aes(x = Farms, y = Value, colour = Treat) +
-  geom_jitter() +
-  geom_boxplot(aes(group = Treat), fill = "#112446") +
-  scale_color_hue(direction = 1) +
-  labs(
-    y = "Amount of nema",
-    title = "Across farms nema amounts"
-  ) +
-  theme_minimal()
-ggplot(SG23) +
-  aes(x = Value, y = Treat, fill = Treat, group = Farms) +
-  geom_boxplot() +
-  scale_fill_hue(direction = 1) +
-  labs(
-    x = "Total of Nema",
-    y = "Farm",
-    title = "Nema farm sites grouped by treat"
-  ) +
-  coord_flip() +
-  theme_minimal()
-SG23 %>%
-  group_by(Nematodes) %>%
-  summarise(mean_nematodes = mean(Value, na.rm = TRUE)) %>%
-  ggplot(., aes(x = Treat, y = mean_nematodes)) + geom_col()
-
+ggplot(SG23, aes(x=Irrig, y=Value, fill = Till)) +
+  geom_boxplot()+
+  facet_wrap(vars(Nematodes), scales="free_y", labeller=labeller(Nematodes=Nematode_obj))+
+  labs(title = "Nematodes 2023", x="Irrigation", y="Abundance") +
+  scale_x_discrete(labels=c("Non-Irrigated", "Irrigated"))+
+  scale_fill_discrete(name="Tillage",
+                      labels=c("Conventional", "Reduced"))+
+  theme(panel.background = element_blank(),
+        plot.title = element_text(size = 23L, 
+                                  face = "bold", hjust = 0.5),
+        axis.title.y = element_text(size=20, face = "bold"),
+        axis.title.x = element_text(size=20, face = "bold"))
 
 ################## Year 24
+
+SG24[c("Irrig","Till")] = str_split_fixed(SG24$Treat, "",2 )
+
+
+ggplot(SG24, aes(x=Irrig, y=Value, fill = Till)) +
+  geom_boxplot()+
+  facet_wrap(vars(Nematodes), scales="free_y", labeller=labeller(Nematodes=Nematode_obj))+
+  labs(title = "Nematodes 2024", x="Irrigation", y="Abundance") +
+  scale_x_discrete(labels=c("Non-Irrigated", "Irrigated"))+
+  scale_fill_discrete(name="Tillage",
+                      labels=c("Conventional", "Reduced"))+
+  theme(panel.background = element_blank(),
+        plot.title = element_text(size = 23L, 
+                                  face = "bold", hjust = 0.5),
+        axis.title.y = element_text(size=20, face = "bold"),
+        axis.title.x = element_text(size=20, face = "bold"))
+
+###Remove Lesion to match up with 2023 Data
+SG24= SG24[SG24$Nematodes %in% c("ring", "root.knot","spiral","stubby.root"), ]
+
+ggplot(SG24, aes(x=Irrig, y=Value, fill = Till)) +
+  geom_boxplot()+
+  facet_wrap(vars(Nematodes), scales="free_y", labeller=labeller(Nematodes=Nematode_obj))+
+  labs(title = "Nematodes 2024", x="Irrigation", y="Abundance") +
+  scale_x_discrete(labels=c("Non-Irrigated", "Irrigated"))+
+  scale_fill_discrete(name="Tillage",
+                      labels=c("Conventional", "Reduced"))+
+  theme(panel.background = element_blank(),
+        plot.title = element_text(size = 23L, 
+                                  face = "bold", hjust = 0.5),
+        axis.title.y = element_text(size=20, face = "bold"),
+        axis.title.x = element_text(size=20, face = "bold"))
+
+######
+
 ggplot(SG24) +
-  aes(x = treatment, y = root.knot, fill = treatment) +
+  aes(x = Treat, y = Value, fill = Treat) +
   geom_col() +
   geom_boxplot() +
   scale_fill_hue(direction = 1) +
   labs(
     x = "Treatments",
-    y = "Root Knot Nematode Count",
+    y = "Nematode Count",
     title = "2024 Nematodes across Treaments"
   ) +
   theme_classic() +
@@ -267,12 +225,13 @@ ggplot(SG24) +
     legend.title = element_text(size = 15L)
   )
 
-ggplot(data = SG24, aes(x = treatment, y = Value, fill = treatment)) +
+
+ggplot(data = SG24, aes(x = Treat, y = Value, fill = Treat)) +
   stat_summary(fun = mean, geom = "col") +
   stat_summary(fun.data = mean_se, geom = "errorbar") +
   facet_wrap(vars(Nematodes), scale = "free_y") +
   labs(x = "Treatment", y = "Mean Number of Nematodes",
-       title = "2024 Nematodes Means and Errorbars across Treatments") +
+       title = "2024 Nematodes across Treatments") +
   theme_classic() +
   theme(
     axis.text.y = element_text(size = 15L),
