@@ -39,7 +39,7 @@ summary(model_simple_root)
 plot(model_simple_root)
 
 # Simple linear regression
-model_simple_spiral <- lm(data$spiral ~ data$NDWI.avg)
+model_simple_spiral <- glm.nb(rootknot ~ NDWI.avg,data=data)
 
 summary(model_simple_spiral)
 #Residuals:
