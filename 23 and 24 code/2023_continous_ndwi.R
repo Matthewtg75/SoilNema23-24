@@ -5,6 +5,8 @@ library("dplyr")
 # Step 1: Load the CSV file
 data <- read.csv("C:/Users/Matth/Github/SoilNema23-24/Metadata/metad_ndwi_23.csv")
 
+data_up <- read.csv("C:/Users/Matth/Github/SoilNema23-24/Metadata/Metadata spreadsheet w NDWI 2023.csv")
+
 # Step 2: View column names to find your variables
 colnames(data)
 
@@ -54,3 +56,5 @@ summary(model_simple_spiral)
 #F-statistic: 1.232 on 1 and 18 DF,  p-value: 0.2816
 
 plot(model_simple_spiral)
+
+model_simple_tot <- glm.nb(Nem_total ~ NDWI.avg,data=data_up)
